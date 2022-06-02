@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
-import Layout from './Components/Layout/Layout';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TreasurerReport from "./Components/TreasurerComponents/TreasurerReport";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <Layout>
-    <App />
-  </Layout>
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<App />}/>
+      <Route path='/report' element={<TreasurerReport/>} />
+    </Routes>
+  </BrowserRouter>
 );
