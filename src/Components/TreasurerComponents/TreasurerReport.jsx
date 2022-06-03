@@ -13,8 +13,6 @@ const TreasurerReport = () => {
             const result = await axios(
                 "http://192.168.69.134:5000/tres/report"
             );
-
-            console.log(result.data);
             setTransactionReport(result.data.report);
         }
 

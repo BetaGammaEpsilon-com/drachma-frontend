@@ -19,7 +19,7 @@ const NavBar = () => {
                 Users
             </div>
         </div>
-    )
+    );
 }
 
 export default NavBar;
