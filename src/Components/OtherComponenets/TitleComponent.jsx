@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
-import logo from './../../logo.svg';
+import logo from './../../Assets/logo.svg';
 import { Link } from "react-router-dom";
 
 const TitleComponent = () => {

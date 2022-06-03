@@ -5,17 +5,17 @@ const NavBar = () => {
 
     return (
         <div className='flex text-center justify-between px-10 col-span-6 py-14 font-semibold'>
-            <div>
+            <div className='hover:text-yellow-500'>
                 Import
             </div>
-            <div>
+            <div className='hover:text-yellow-500'>
                 Export
             </div>
-            <div>
+            <div className='hover:text-yellow-500'>
                 Transact
             </div>
-            <Link to='/report'>Report</Link>
-            <div>
+            <Link className='hover:text-yellow-500' to='/report'>Report</Link>
+            <div className='hover:text-yellow-500'>
                 Users
             </div>
         </div>
