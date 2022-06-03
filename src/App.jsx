@@ -3,7 +3,7 @@ import TreasurerReport from './Components/TreasurerComponents/TreasurerReport';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Drachma</h1>
       <TreasurerMainScreenComponent />
     </div>
