@@ -1,12 +1,8 @@
-import TreasurerMainScreenComponent from './Components/TreasurerComponents/TreasurerMainScreenComponent';
-import TreasurerReport from './Components/TreasurerComponents/TreasurerReport';
+import MainScreenComponent from './Components/MainScreenComponent';
 
 function App() {
   return (
-    <div>
-      <h1>Drachma</h1>
-      <TreasurerMainScreenComponent />
-    </div>
+    <MainScreenComponent />
   );
 }
 
