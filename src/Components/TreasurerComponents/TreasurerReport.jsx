@@ -6,15 +6,18 @@ import TitleComponent from "../OtherComponenets/TitleComponent";
 
 const TreasurerReport = () => {
 
+    const JoshIP = "http://192.168.69.109:5000/tres/report";
+    const RobbieIP = "http://192.168.69.134:5000/tres/report";
+    const ZebIP = "http://127.0.0.1:5000/tres/report"
+
     const [transactionReport, setTransactionReport] = useState("");
 
     useEffect(() => {
         const fetchReport = async() => {
             const result = await axios(
-                "http://192.168.69.134:5000/tres/report"
+                ZebIP
             );
-
-            console.log(result.data);
+            console.log(result.data)
             setTransactionReport(result.data.report);
         }
 
@@ -24,7 +27,7 @@ const TreasurerReport = () => {
     return (
         <div>
             <TitleComponent />
-            <ReactMarkdown children={transactionReport} remarkPlugins={[remarkGfm]}/>
+            <ReactMarkdown className='px-5 py-5' children={transactionReport} remarkPlugins={[remarkGfm]}/>
         </div>
     );
 }

@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import TransactionComponent from './TransactionComponent';
+import TransactionHeaderComponent from './TransactionHeaderComponent';
 
 const TreasurerMainScreenComponent = () => {
+
+    const JoshIP = "http://192.168.69.109:5000/tres";
+    const RobbieIP = "http://192.168.69.134:5000/tres";
+    const ZebIP = "http://127.0.0.1:5000/tres";
 
     const [transactionsTotal, setTransactionsTotal] = useState(0);
     const [transactionsVerifiedTotal, setTransactionsVerifiedTotal] = useState(0);
@@ -17,9 +22,9 @@ const TreasurerMainScreenComponent = () => {
     useEffect(() => {
         const fetchTransactions = async() => {
             const result = await axios(
-                "http://192.168.69.134:5000/tres"
+                ZebIP
             );
-
+            
             let returnedData = result.data;
 
             setTransactionsTotal(returnedData.total);
@@ -34,46 +39,61 @@ const TreasurerMainScreenComponent = () => {
       }, []);
 
     return (
-        <div>
-            <h3>Treasurer View</h3>
-            <p>Total: {transactionsTotal}</p>
-            <p>Unverified Transactions: </p>
-            <p>Unverified Total: {transactionsUnverifiedTotal}</p>
-            <ul>
-                {
-                    transactionsUnverifiedList.map(transaction => 
-                        <TransactionComponent 
-                            key={transaction.txid}
-                            transactionId={transaction.txid}
-                            userId={transaction.uid}
-                            date={transaction.tx_date}
-                            price={transaction.price}
-                            motion={transaction.motion}
-                            description={transaction.description}
-                            user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
-                        />
-                    )
-                }
-            </ul>
-            <p>Verified Transactions:</p>
-            <p>Verified Total: {transactionsVerifiedTotal}</p>
-            <p>Verified Transactions: </p>
-            <ul>
-                {
-                    transactionsVerifiedList.map(transaction => 
-                        <TransactionComponent 
-                            key={transaction.txid}
-                            transactionId={transaction.txid}
-                            userId={transaction.uid}
-                            date={transaction.tx_date}
-                            price={transaction.price}
-                            motion={transaction.motion}
-                            description={transaction.description}
-                            user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
-                        />
-                    )
-                }
-            </ul>
+        <div className='grid grid-cols-9 grid-rows-6 py-5 px-5'>
+            <div className='col-span-5 row-span-3 col-start-1 row-start-1'>
+                <p className='text-2xl font-semibold underline'>Verified Transactions:</p>
+                <TransactionHeaderComponent />
+                <ul className='list-none'>
+                    {
+                        transactionsVerifiedList.map(transaction => 
+                            <TransactionComponent 
+                                key={transaction.txid}
+                                transactionId={transaction.txid}
+                                userId={transaction.uid}
+                                date={transaction.tx_date}
+                                price={transaction.price}
+                                motion={transaction.motion}
+                                description={transaction.description}
+                                user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
+                            />
+                        )
+                    }
+                </ul>
+            </div>
+            <div className='col-span-5 row-span-3 row-start-4 col-start-1'>
+                <p className='text-2xl font-semibold underline'>Unverified Transactions: </p>
+                <TransactionHeaderComponent />
+                <ul className='list-none'>
+                    {
+                        transactionsUnverifiedList.map(transaction => 
+                            <TransactionComponent 
+                                key={transaction.txid}
+                                transactionId={transaction.txid}
+                                userId={transaction.uid}
+                                date={transaction.tx_date}
+                                price={transaction.price}
+                                motion={transaction.motion}
+                                description={transaction.description}
+                                user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
+                            />
+                        )
+                    }
+                </ul>
+            </div>
+            <div className='col-span-3 row-span-all row-start-1 col-start-7'>
+                <div className='grid grid-cols-2 grid-rows-none'>
+                    <p>Total:</p>
+                    <p>{transactionsTotal}</p>
+                </div>
+                <div className='grid grid-cols-2 grid-rows-none'>
+                    <p>Verified Total:</p>
+                    <p>{transactionsVerifiedTotal}</p>
+                </div>
+                <div className='grid grid-cols-2 grid-rows-none'>
+                    <p>Unverified Total:</p>
+                    <p>{transactionsUnverifiedTotal}</p>
+                </div>
+            </div>
         </div>
     );
 }

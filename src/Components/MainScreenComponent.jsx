@@ -9,7 +9,7 @@ const MainScreenComponent = () => {
             <TitleComponent />    
             <TreasurerMainScreenComponent />  
         </div> 
-    )
+    );
 }
 
 export default MainScreenComponent;
