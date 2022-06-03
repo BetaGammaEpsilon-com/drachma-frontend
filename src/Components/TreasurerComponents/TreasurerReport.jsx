@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import TitleComponent from "../OtherComponenets/TitleComponent";
 
 const TreasurerReport = () => {
 
@@ -22,6 +23,7 @@ const TreasurerReport = () => {
 
     return (
         <div>
+            <TitleComponent />
             <ReactMarkdown children={transactionReport} remarkPlugins={[remarkGfm]}/>
         </div>
     );
