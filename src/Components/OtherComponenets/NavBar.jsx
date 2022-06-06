@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
 
     return (
-        <div className='flex text-center justify-between px-10 col-span-6 py-14 font-semibold'>
+        <div className='flex text-center justify-around px-10 col-span-6 py-14 font-semibold'>
             <div className='hover:text-yellow-500'>
                 Import
             </div>
