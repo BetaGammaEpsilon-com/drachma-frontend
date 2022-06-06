@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import TransactionComponent from './TransactionComponent';
+import VerifiedTransactionComponent from './VerifiedTransactionComponent';
+import UnverifiedTransactionComponent from './UnverifiedTransactionComponent';
 import TransactionHeaderComponent from './TransactionHeaderComponent';
 
 const TreasurerMainScreenComponent = () => {
@@ -46,7 +47,7 @@ const TreasurerMainScreenComponent = () => {
                 <ul className='list-none'>
                     {
                         transactionsVerifiedList.map(transaction => 
-                            <TransactionComponent 
+                            <VerifiedTransactionComponent 
                                 key={transaction.txid}
                                 transactionId={transaction.txid}
                                 userId={transaction.uid}
@@ -66,7 +67,7 @@ const TreasurerMainScreenComponent = () => {
                 <ul className='list-none'>
                     {
                         transactionsUnverifiedList.map(transaction => 
-                            <TransactionComponent 
+                            <UnverifiedTransactionComponent 
                                 key={transaction.txid}
                                 transactionId={transaction.txid}
                                 userId={transaction.uid}
