@@ -16,7 +16,7 @@ const NavBar = () => {
             </div>
             <Link className='hover:text-yellow-500' to='/report'>Report</Link>
             <div className='hover:text-yellow-500'>
-                Users
+                Motions
             </div>
         </div>
     );

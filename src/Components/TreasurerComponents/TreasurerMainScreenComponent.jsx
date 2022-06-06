@@ -28,6 +28,8 @@ const TreasurerMainScreenComponent = () => {
             
             let returnedData = result.data;
 
+            console.log(result.data)
+
             setTransactionsTotal(returnedData.total);
             setTransactionsVerifiedTotal(returnedData.verified_total);
             setTransactionsUnverifiedTotal(returnedData.unverified_total);
