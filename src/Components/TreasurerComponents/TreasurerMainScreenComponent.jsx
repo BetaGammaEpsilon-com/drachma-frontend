@@ -44,7 +44,7 @@ const TreasurerMainScreenComponent = () => {
     return (
         <div className='grid grid-cols-9 grid-rows-6 py-5 px-5'>
             <div className='col-span-5 row-span-3 col-start-1 row-start-1'>
-                <p className='text-2xl font-semibold underline'>Verified Transactions:</p>
+                <p className='text-2xl font-semibold'>verified transactions:</p>
                 <TransactionHeaderComponent />
                 <ul className='list-none'>
                     {
@@ -64,7 +64,7 @@ const TreasurerMainScreenComponent = () => {
                 </ul>
             </div>
             <div className='col-span-5 row-span-3 row-start-4 col-start-1'>
-                <p className='text-2xl font-semibold underline'>Unverified Transactions: </p>
+                <p className='text-2xl font-semibold'>unverified transactions: </p>
                 <TransactionHeaderComponent />
                 <ul className='list-none'>
                     {
@@ -85,15 +85,15 @@ const TreasurerMainScreenComponent = () => {
             </div>
             <div className='col-span-3 row-span-all row-start-1 col-start-7'>
                 <div className='grid grid-cols-2 grid-rows-none'>
-                    <p>Total:</p>
+                    <p>total:</p>
                     <p>{transactionsTotal}</p>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-none'>
-                    <p>Verified Total:</p>
+                    <p>verified total:</p>
                     <p>{transactionsVerifiedTotal}</p>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-none'>
-                    <p>Unverified Total:</p>
+                    <p>unverified total:</p>
                     <p>{transactionsUnverifiedTotal}</p>
                 </div>
             </div>

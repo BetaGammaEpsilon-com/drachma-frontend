@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    background-color: rgb(23 50 94);
-    color: white;
+    background-color: #273240;
+    color: #F2F2F2;
     font-family: Georgia;
 }
