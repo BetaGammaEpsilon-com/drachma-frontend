@@ -1,5 +1,6 @@
 import React from "react";
 
+// Renders verified transactions on the treasurer main screen
 const VerifiedTransactionComponent = (props) => {
 
     const description = props.description;

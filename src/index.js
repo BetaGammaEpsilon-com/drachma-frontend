@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TreasurerReport from "./Components/TreasurerComponents/TreasurerReport";
+import TreasurerReport from "./Components/ReportComponents/TreasurerReport";
 import './index.css'
+import MotionsMainScreenComponent from "./Components/MotionComponents/MotionsMainScreenComponent";
+import NoMatchComponent from "./Components/OtherComponenets/NoMatchComponent";
+import FullVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/FullVerifiedTransactionsComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -11,7 +14,10 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />}/>
-      <Route path='/report' element={<TreasurerReport/>} />
+      <Route path='report' element={<TreasurerReport/>} />
+      <Route path='motions' element={<MotionsMainScreenComponent />} />
+      <Route path='verified' element={<FullVerifiedTransactionComponent />} />
+      <Route path='*' element={<NoMatchComponent / >} />
     </Routes>
   </BrowserRouter>
 );

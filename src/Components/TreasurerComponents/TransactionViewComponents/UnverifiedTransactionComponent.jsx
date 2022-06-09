@@ -1,5 +1,6 @@
 import React from "react";
 
+// Renders unverified transactions on the treasurer main screen
 const UnverifiedTransactionComponent = (props) => {
 
     const description = props.description;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Navigation Bar
 const NavBar = () => {
 
     return (
@@ -15,9 +16,7 @@ const NavBar = () => {
                 transact
             </div>
             <Link className='hover:text-honor-300' to='/report'>report</Link>
-            <div className='hover:text-honor-300'>
-                motions
-            </div>
+            <Link className='hover:text-honor-300' to='/motions'>motions</Link>
         </div>
     );
 }

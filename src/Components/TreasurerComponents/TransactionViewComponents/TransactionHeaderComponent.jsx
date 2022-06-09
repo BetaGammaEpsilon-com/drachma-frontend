@@ -1,5 +1,6 @@
 import React from "react";
 
+// sub component serving as labels for transactions on the main treasurer screen
 const TransactionHeaderComponent = () => {
 
     return (
