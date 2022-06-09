@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import VerifiedTransactionComponent from './VerifiedTransactionComponent';
-import UnverifiedTransactionComponent from './UnverifiedTransactionComponent';
-import TransactionHeaderComponent from './TransactionHeaderComponent';
+import { Link } from 'react-router-dom';
+import VerifiedTransactionComponent from './TransactionViewComponents/VerifiedTransactionComponent';
+import UnverifiedTransactionComponent from './TransactionViewComponents/UnverifiedTransactionComponent';
+import TransactionHeaderComponent from './TransactionViewComponents/TransactionHeaderComponent';
 
+// Main treasurer home screen to view transactions
 const TreasurerMainScreenComponent = () => {
 
     const JoshIP = "http://192.168.69.109:5000/tres";
@@ -17,8 +19,6 @@ const TreasurerMainScreenComponent = () => {
     const [transactionsUnverifiedList, setTransactionsUnverifiedList] = useState([]);
 
     const [usersList, setUsersList] = useState([]);
-
-    const [transactionReport, setTransactionReport] = useState({});
 
     useEffect(() => {
         const fetchTransactions = async() => {
@@ -42,28 +42,8 @@ const TreasurerMainScreenComponent = () => {
       }, []);
 
     return (
-        <div className='grid grid-cols-9 grid-rows-6 py-5 px-5'>
-            <div className='col-span-5 row-span-3 col-start-1 row-start-1'>
-                <p className='text-2xl font-semibold'>verified transactions:</p>
-                <TransactionHeaderComponent />
-                <ul className='list-none'>
-                    {
-                        transactionsVerifiedList.map(transaction => 
-                            <VerifiedTransactionComponent 
-                                key={transaction.txid}
-                                transactionId={transaction.txid}
-                                userId={transaction.uid}
-                                date={transaction.tx_date}
-                                price={transaction.price}
-                                motion={transaction.motion}
-                                description={transaction.description}
-                                user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
-                            />
-                        )
-                    }
-                </ul>
-            </div>
-            <div className='col-span-5 row-span-3 row-start-4 col-start-1'>
+        <div className='grid grid-cols-9 grid-flow-row py-5 px-5'>
+            <div className='col-span-5 row-start-1 col-start-1'>
                 <p className='text-2xl font-semibold'>unverified transactions: </p>
                 <TransactionHeaderComponent />
                 <ul className='list-none'>
@@ -83,18 +63,41 @@ const TreasurerMainScreenComponent = () => {
                     }
                 </ul>
             </div>
+            <div className='col-span-5 col-start-1 row-start-2 py-10'>
+                <p className='text-2xl font-semibold'>verified transactions:</p>
+                <TransactionHeaderComponent />
+                <ul className='list-none'>
+                    {
+                        transactionsVerifiedList.slice(0,5).map(transaction => 
+                            <VerifiedTransactionComponent 
+                                key={transaction.txid}
+                                transactionId={transaction.txid}
+                                userId={transaction.uid}
+                                date={transaction.tx_date}
+                                price={transaction.price}
+                                motion={transaction.motion}
+                                description={transaction.description}
+                                user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
+                            />
+                        )
+                    }
+                </ul>
+                <div className='py-10'>
+                    <Link to='/verified' className='italic hover:text-honor-300'>view all</Link>
+                </div>
+            </div>
             <div className='col-span-3 row-span-all row-start-1 col-start-7'>
                 <div className='grid grid-cols-2 grid-rows-none'>
                     <p>total:</p>
-                    <p>{transactionsTotal}</p>
+                    <p>${transactionsTotal}</p>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-none'>
                     <p>verified total:</p>
-                    <p>{transactionsVerifiedTotal}</p>
+                    <p>${transactionsVerifiedTotal}</p>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-none'>
                     <p>unverified total:</p>
-                    <p>{transactionsUnverifiedTotal}</p>
+                    <p>${transactionsUnverifiedTotal}</p>
                 </div>
             </div>
         </div>

@@ -4,6 +4,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import TitleComponent from "../OtherComponenets/TitleComponent";
 
+// Main treasurer report screen
+// Navigation from report link
 const TreasurerReport = () => {
 
     const JoshIP = "http://192.168.69.109:5000/tres/report";
@@ -17,7 +19,7 @@ const TreasurerReport = () => {
             const result = await axios(
                 ZebIP
             );
-            console.log(result.data)
+            console.log(result.data);
             setTransactionReport(result.data.report);
         }
 
