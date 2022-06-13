@@ -20,6 +20,13 @@ const SingleVerifiedTransactionComponent = () => {
     const [description, setDescription] = useState("");
     const [username, setUsername] = useState("");
 
+    const handleDeleteTransaction = () => {
+        const confirmation = window.confirm("Are you sure you want to delete this transaction?");
+        if (confirmation) {
+            deleteTransaction();
+        }
+    }
+
     const deleteTransaction = async() => {
             const result = await axios.delete(ZebIPTransactionURL)
             .catch(error => alert(error));
@@ -87,7 +94,7 @@ const SingleVerifiedTransactionComponent = () => {
                 </button>
                 <button 
                     className='col-start-6 row-start-7 outline rounded-md h-6 px-5 hover:outline-crimson hover:text-crimson'
-                    onClick={deleteTransaction}>
+                    onClick={handleDeleteTransaction}>
                         delete
                 </button>
             </div>
