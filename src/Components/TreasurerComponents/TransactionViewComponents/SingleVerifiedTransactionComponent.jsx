@@ -21,7 +21,7 @@ const SingleVerifiedTransactionComponent = () => {
     const [username, setUsername] = useState("");
 
     const handleDeleteTransaction = () => {
-        const confirmation = window.confirm("Are you sure you want to delete this transaction?");
+        const confirmation = window.confirm("Are you sure you want to permanently delete this transaction?");
         if (confirmation) {
             deleteTransaction();
         }
@@ -59,31 +59,31 @@ const SingleVerifiedTransactionComponent = () => {
             <TitleComponent />
             <div className='grid grid-cols-7 grid-flow-row py-5 px-5 gap-4'>
                 <p className='col-span-3 col-start-1 row-start-1'>user:</p>
-                <input className='col-span-5 col-start-3 row-start-1 text-loyalty lowercase' value={username}></input>
+                <input className='col-span-5 col-start-3 row-start-1 text-loyalty lowercase h-9 indent-1' value={username}></input>
                 <p className='col-span-3 col-start-1 row-start-2'>date:</p>
                 <input 
-                    className='col-span-5 col-start-3 row-start-2 text-loyalty' 
+                    className='col-span-5 col-start-3 row-start-2 text-loyalty h-9 indent-1' 
                     value={date}
                     type='date'
                     onChange={e => setDate(e.target.value)}>
                 </input>
                 <p className='col-span-3 col-start-1 row-start-3'>motion:</p>
                 <input 
-                    className='col-span-5 col-start-3 row-start-3 text-loyalty' 
+                    className='col-span-5 col-start-3 row-start-3 text-loyalty h-9 indent-1' 
                     value={motion}
                     type='text'
                     onChange={e => setMotion(e.target.value)}>
                 </input>
                 <p className='col-span-3 col-start-1 row-start-4'>price:</p>
                 <input 
-                    className='col-span-5 col-start-3 row-start-4 text-loyalty' 
+                    className='col-span-5 col-start-3 row-start-4 text-loyalty h-9 indent-1' 
                     value={price}
                     type='number'
                     onChange={e => setPrice(e.target.value)}>
                 </input>
                 <p className='col-span-3 col-start-1 row-start-5'>description:</p>
                 <input 
-                    className='col-span-5 col-start-3 row-start-5 text-loyalty lowercase' 
+                    className='col-span-5 col-start-3 row-start-5 text-loyalty lowercase h-9 indent-1' 
                     value={description}
                     type='text'
                     onChange={e => setDescription(e.target.value)}>

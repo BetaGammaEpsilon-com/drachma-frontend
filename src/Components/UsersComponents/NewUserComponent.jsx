@@ -9,7 +9,7 @@ const NewUserComponent = () => {
     const [nameField, setNameField] = useState("");
     const [balanceField, setBalanceField] = useState(0);
 
-    const createNewUser = async(e) => {
+    const createNewUser = async() => {
 
         const result = await axios.post(ZebIP, {
             name: nameField,
@@ -18,13 +18,24 @@ const NewUserComponent = () => {
         .catch(error => alert(error))
     }
 
+    const userInputValidations = (e) => {
+
+        if (nameField == "") {
+            e.preventDefault();
+            alert("enter a name for the user")
+        }
+        else {
+            createNewUser();
+        }
+    }
+
     return (
-        <form onSubmit={e => createNewUser(e)}>
+        <form onSubmit={e => userInputValidations(e)}>
             <p className='text-2xl pb-4'>New User:</p>
             <div className='grid grid-col-2 grid-flow-row gap-4'>
                 <p className='col-start-1 row-start-1'>name:</p>
                 <input 
-                    className='col-start-2 row-start-1 text-loyalty lowercase'
+                    className='col-start-2 row-start-1 text-loyalty lowercase h-9 indent-1'
                     value={nameField}
                     type='text'
                     onChange={e => setNameField(e.target.value)}
@@ -32,7 +43,7 @@ const NewUserComponent = () => {
                 </input>
                 <p className='col-start-1 row-start-2'>balance:</p>
                 <input 
-                    className='col-start-2 row-start-2 text-loyalty'
+                    className='col-start-2 row-start-2 text-loyalty h-9 indent-1'
                     value={balanceField}
                     type='number'
                     onChange={e => setBalanceField(e.target.value)}>

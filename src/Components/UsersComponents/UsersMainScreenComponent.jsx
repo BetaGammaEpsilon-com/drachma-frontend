@@ -30,14 +30,6 @@ const UsersMainScreenComponent = () => {
                     <UserHeaderComponent/>
                     <ul className='pt-2'>
                     {
-                        // users.sort((a, b) => parseFloat(b.balance) - parseFloat(a.balance)).map((user) => 
-                        //     <UserComponent
-                        //         key={user.uid}
-                        //         uid={user.uid}
-                        //         name={user.name}
-                        //         balance={user.balance}
-                        //     />)
-
                         users.map((user) => 
                             <UserComponent
                                 key={user.uid}
