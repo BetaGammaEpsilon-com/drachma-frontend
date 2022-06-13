@@ -24,7 +24,7 @@ const TreasurerReport = () => {
         }
 
         fetchReport();
-    })
+    }, []);
 
     return (
         <div>

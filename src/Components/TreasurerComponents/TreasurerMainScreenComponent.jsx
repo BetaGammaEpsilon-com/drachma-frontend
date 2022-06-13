@@ -50,14 +50,14 @@ const TreasurerMainScreenComponent = () => {
                     {
                         transactionsUnverifiedList.map(transaction => 
                             <UnverifiedTransactionComponent 
-                                key={transaction.txid}
-                                transactionId={transaction.txid}
-                                userId={transaction.uid}
-                                date={transaction.tx_date}
-                                price={transaction.price}
-                                motion={transaction.motion}
-                                description={transaction.description}
-                                user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
+                                key={transaction.transaction.txid}
+                                transactionId={transaction.transaction.txid}
+                                userId={transaction.transaction.uid}
+                                date={transaction.transaction.tx_date}
+                                price={transaction.transaction.price}
+                                motion={transaction.transaction.motion}
+                                description={transaction.transaction.description}
+                                user={transaction.user}
                             />
                         )
                     }
@@ -70,14 +70,14 @@ const TreasurerMainScreenComponent = () => {
                     {
                         transactionsVerifiedList.slice(0,5).map(transaction => 
                             <VerifiedTransactionComponent 
-                                key={transaction.txid}
-                                transactionId={transaction.txid}
-                                userId={transaction.uid}
-                                date={transaction.tx_date}
-                                price={transaction.price}
-                                motion={transaction.motion}
-                                description={transaction.description}
-                                user={usersList.filter((user)=> user.uid === transaction.uid)[0]}
+                                key={transaction.transaction.txid}
+                                transactionId={transaction.transaction.txid}
+                                userId={transaction.transaction.uid}
+                                date={transaction.transaction.tx_date}
+                                price={transaction.transaction.price}
+                                motion={transaction.transaction.motion}
+                                description={transaction.transaction.description}
+                                user={transaction.user}
                             />
                         )
                     }
