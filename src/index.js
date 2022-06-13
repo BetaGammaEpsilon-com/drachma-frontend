@@ -7,7 +7,7 @@ import './index.css'
 import MotionsMainScreenComponent from "./Components/MotionComponents/MotionsMainScreenComponent";
 import NoMatchComponent from "./Components/OtherComponenets/NoMatchComponent";
 import FullVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/FullVerifiedTransactionsComponent";
-import SingleTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/SingleTransactionComponent";
+import SingleVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/SingleVerifiedTransactionComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,7 +18,7 @@ root.render(
       <Route path='report' element={<TreasurerReport/>} />
       <Route path='motions' element={<MotionsMainScreenComponent />} />
       <Route path='verified' element={<FullVerifiedTransactionComponent />} />
-      <Route path=':txid' element={<SingleTransactionComponent />} />
+      <Route path='verified/:txid' element={<SingleVerifiedTransactionComponent />} />
       <Route path='*' element={<NoMatchComponent / >} />
     </Routes>
   </BrowserRouter>
