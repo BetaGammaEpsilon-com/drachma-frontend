@@ -11,6 +11,7 @@ import SingleVerifiedTransactionComponent from "./Components/TreasurerComponents
 import UsersMainScreenComponent from "./Components/UsersComponents/UsersMainScreenComponent"
 import SingleUnverifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/SingleUnverifiedTransactionComponent";
 import SingleUserComponent from "./Components/UsersComponents/SingleUserComponent";
+import TransactMainScreenComponent from "./Components/TransactComponents/TransactMainScreenComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -23,6 +24,7 @@ root.render(
       <Route path='users' element={<UsersMainScreenComponent />} />
       <Route path='users/:uid' element={<SingleUserComponent />} />
       <Route path='users/:uid/*' element={<UsersMainScreenComponent />} />
+      <Route path='transact' element={<TransactMainScreenComponent />} />
       <Route path='verified' element={<FullVerifiedTransactionComponent />} />
       <Route path='verified/:txid' element={<SingleVerifiedTransactionComponent />} />
       <Route path='verified/:txid/*' element={<FullVerifiedTransactionComponent />} />

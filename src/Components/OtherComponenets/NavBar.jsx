@@ -12,10 +12,8 @@ const NavBar = () => {
             <div className='hover:text-honor-300'>
                 export
             </div>
-            <div className='hover:text-honor-300'>
-                transact
-            </div>
-            <Link className='hover:text-honor-300' to='/report'>report</Link>
+            <Link className='hover:text-honor-300' to='/transact'>transact</Link>
+            <Link className='hover:text-honor-300' to='/report' target='_blank'>report</Link>
             <Link className='hover:text-honor-300' to='/motions'>motions</Link>
             <Link className='hover:text-honor-300' to='/users'>users</Link>
         </div>

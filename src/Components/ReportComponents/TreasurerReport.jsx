@@ -28,7 +28,6 @@ const TreasurerReport = () => {
 
     return (
         <div>
-            <TitleComponent />
             <ReactMarkdown className='px-5 py-5' remarkPlugins={[remarkGfm]} children={transactionReport} />
         </div>
     );

@@ -9,7 +9,8 @@ const NewUserComponent = () => {
     const [nameField, setNameField] = useState("");
     const [balanceField, setBalanceField] = useState(0);
 
-    const createNewUser = async() => {
+    const createNewUser = async(e) => {
+
         const result = await axios.post(ZebIP, {
             name: nameField,
             balance: balanceField
@@ -18,7 +19,7 @@ const NewUserComponent = () => {
     }
 
     return (
-        <form>
+        <form onSubmit={e => createNewUser(e)}>
             <p className='text-2xl pb-4'>New User:</p>
             <div className='grid grid-col-2 grid-flow-row gap-4'>
                 <p className='col-start-1 row-start-1'>name:</p>
@@ -38,8 +39,7 @@ const NewUserComponent = () => {
                 </input>
                 <button 
                     type='submit'
-                    className='justify-self-end row-start-3 col-start-2 outline rounded-md h-6 px-5 hover:outline-honor-300 hover:text-honor-300'
-                    onClick={createNewUser}>
+                    className='justify-self-end row-start-3 col-start-2 outline rounded-md h-6 px-5 hover:outline-honor-300 hover:text-honor-300'>
                         submit
                 </button>
             </div>
