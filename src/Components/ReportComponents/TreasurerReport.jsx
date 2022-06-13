@@ -1,34 +1,45 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import TitleComponent from "../OtherComponenets/TitleComponent";
+import TreasurerReportHeaderComponent from "./TreasurerReportHeaderComponent";
+import TreasurerReportRowComponent from "./TreasurerReportRowComponent";
 
 // Main treasurer report screen
 // Navigation from report link
 const TreasurerReport = () => {
 
-    const JoshIP = "http://192.168.69.109:5000/tres/report";
-    const RobbieIP = "http://192.168.69.134:5000/tres/report";
-    const ZebIP = "http://127.0.0.1:5000/tres/report"
+    const ZebIP = "http://127.0.0.1:5000/user"
 
-    const [transactionReport, setTransactionReport] = useState("");
+    const [usersList, setUsersList] = useState([]);
 
     useEffect(() => {
         const fetchReport = async() => {
             const result = await axios(
                 ZebIP
             );
-            console.log(result.data);
-            setTransactionReport(result.data.report);
+            setUsersList(result.data);
         }
 
         fetchReport();
     }, []);
 
     return (
-        <div>
-            <ReactMarkdown className='px-5 py-5' remarkPlugins={[remarkGfm]} children={transactionReport} />
+        <div className='p-5'>
+            <div className='grid grid-cols-7 grid-flow-row'>
+                <div className='col-start-1 col-span-2 row-start-1'>
+                    <TreasurerReportHeaderComponent />
+                </div>
+                <ul className='col-start-1 col-span-2 row-start-2'>
+                    {
+                        usersList.map((user) =>
+                            <TreasurerReportRowComponent 
+                                key={user.uid}
+                                name={user.name}
+                                balance={user.balance}
+                            />
+                        )
+                    }
+                </ul>
+            </div>
         </div>
     );
 }
