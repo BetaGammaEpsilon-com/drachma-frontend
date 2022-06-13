@@ -7,8 +7,9 @@ const TransactMainScreenComponent = () => {
     return (
         <div>
             <TitleComponent /> 
-            <form className='p-5'>
-            </form>
+            <div className='p-5'>
+                TRANSACT
+            </div>
         </div>
     )
 }
