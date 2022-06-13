@@ -17,6 +17,7 @@ const NavBar = () => {
             </div>
             <Link className='hover:text-honor-300' to='/report'>report</Link>
             <Link className='hover:text-honor-300' to='/motions'>motions</Link>
+            <Link className='hover:text-honor-300' to='/users'>users</Link>
         </div>
     );
 }

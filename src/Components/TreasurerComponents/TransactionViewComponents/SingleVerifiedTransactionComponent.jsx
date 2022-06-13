@@ -1,14 +1,12 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TitleComponent from "../../OtherComponenets/TitleComponent";
 
 // handles the view for looking at a single verified transaction
     // TODO:
-        // get transaction from api
-        // get users from api and match with transaction
         // implement put request for changing information about this transaction
-        // implement delete request for deleting a transaction
 const SingleVerifiedTransactionComponent = () => {
 
     let params = useParams();
@@ -21,12 +19,20 @@ const SingleVerifiedTransactionComponent = () => {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [username, setUsername] = useState("");
+
+    const deleteTransaction = async() => {
+            const result = await axios.delete(ZebIPTransactionURL)
+            .catch(error => alert(error));
+
+            window.location.reload();
+    }
+
+    let navigate = useNavigate();
     
     useEffect(() => {
         const fetchTransaction = async() => {
-            const result = await axios(
-                ZebIPTransactionURL
-            );
+            const result = await axios(ZebIPTransactionURL)
+            .catch(error => navigate('*'));
             
             let returnedTransaction = result.data.transaction;
             let returnedUser = result.data.user;
@@ -77,11 +83,12 @@ const SingleVerifiedTransactionComponent = () => {
                 </input>
                 <button 
                     className='col-start-7 row-start-7 outline rounded-md h-6 px-5 hover:outline-honor-300 hover:text-honor-300'>
-                        Modify
+                        modify
                 </button>
                 <button 
-                    className='col-start-6 row-start-7 outline rounded-md h-6 px-5 hover:outline-honor-300 hover:text-honor-300'>
-                        Delete
+                    className='col-start-6 row-start-7 outline rounded-md h-6 px-5 hover:outline-crimson hover:text-crimson'
+                    onClick={deleteTransaction}>
+                        delete
                 </button>
             </div>
         </div>

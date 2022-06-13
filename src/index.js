@@ -8,6 +8,9 @@ import MotionsMainScreenComponent from "./Components/MotionComponents/MotionsMai
 import NoMatchComponent from "./Components/OtherComponenets/NoMatchComponent";
 import FullVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/FullVerifiedTransactionsComponent";
 import SingleVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/SingleVerifiedTransactionComponent";
+import UsersMainScreenComponent from "./Components/UsersComponents/UsersMainScreenComponent"
+import SingleUnverifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/SingleUnverifiedTransactionComponent";
+import SingleUserComponent from "./Components/UsersComponents/SingleUserComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -17,8 +20,14 @@ root.render(
       <Route path='/' element={<App />}/>
       <Route path='report' element={<TreasurerReport/>} />
       <Route path='motions' element={<MotionsMainScreenComponent />} />
+      <Route path='users' element={<UsersMainScreenComponent />} />
+      <Route path='users/:uid' element={<SingleUserComponent />} />
+      <Route path='users/:uid/*' element={<UsersMainScreenComponent />} />
       <Route path='verified' element={<FullVerifiedTransactionComponent />} />
       <Route path='verified/:txid' element={<SingleVerifiedTransactionComponent />} />
+      <Route path='verified/:txid/*' element={<FullVerifiedTransactionComponent />} />
+      <Route path='unverified/:txid' element={<SingleUnverifiedTransactionComponent />} />
+      <Route path='unverified/:txid/*' element={<App />} />
       <Route path='*' element={<NoMatchComponent / >} />
     </Routes>
   </BrowserRouter>
