@@ -57,7 +57,7 @@ const TreasurerMainScreenComponent = () => {
                                 price={transaction.transaction.price}
                                 motion={transaction.transaction.motion}
                                 description={transaction.transaction.description}
-                                user={transaction.user}
+                                user={transaction.user.name}
                             />
                         )
                     }
@@ -77,7 +77,7 @@ const TreasurerMainScreenComponent = () => {
                                 price={transaction.transaction.price}
                                 motion={transaction.transaction.motion}
                                 description={transaction.transaction.description}
-                                user={transaction.user}
+                                user={transaction.user.name}
                             />
                         )
                     }

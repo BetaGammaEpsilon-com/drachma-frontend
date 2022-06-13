@@ -9,7 +9,7 @@ const VerifiedTransactionComponent = (props) => {
 
     return (
         <li className='grid grid-cols-5 justify-items-start py-4'>
-            <p className='justify-self-center px-5 lowercase'>{props.user.name}</p>
+            <p className='justify-self-center px-5 lowercase'>{props.user}</p>
             <p className='justify-self-center px-5 lowercase'>{dateYear}</p>
             <p className='justify-self-center px-5 lowercase'>{props.motion}</p>
             <p className='justify-self-center px-5 lowercase'>${props.price}</p>
