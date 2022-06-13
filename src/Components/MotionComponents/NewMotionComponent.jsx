@@ -31,7 +31,7 @@ const NewMotionComponent = () => {
 
     return (
         <form onSubmit={e => handleFormSubmit(e)}>
-            <p className='text-2xl pb-4'>New Motion:</p>
+            <p className='text-2xl pb-4'>new motion:</p>
             <div className='grid grid-col-2 grid-flow-row gap-4'>
                 <p className='col-start-1'>motion:</p>
                 <input 

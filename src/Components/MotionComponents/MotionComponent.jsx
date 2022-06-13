@@ -33,7 +33,7 @@ const MotionComponent = (props) => {
             <p className='lowercase'>{props.motion}</p>
             {  !constant &&
                 <button 
-                    className='justify-self-center outline rounded-md h-6 px-5 hover:outline-crimson hover:text-crimson'
+                    className='justify-self-center outline rounded-md h-6 px-5 hover:outline-sacrafice hover:text-sacrafice'
                     onClick={handleDeleteMotion}>
                         delete
                 </button>

@@ -27,7 +27,7 @@ root.render(
       <Route path='transact' element={<TransactMainScreenComponent />} />
       <Route path='verified' element={<FullVerifiedTransactionComponent />} />
       <Route path='verified/:txid' element={<SingleVerifiedTransactionComponent />} />
-      <Route path='verified/:txid/*' element={<FullVerifiedTransactionComponent />} />
+      <Route path='verified/:txid/*' element={<App />} />
       <Route path='unverified/:txid' element={<SingleUnverifiedTransactionComponent />} />
       <Route path='unverified/:txid/*' element={<App />} />
       <Route path='*' element={<NoMatchComponent / >} />

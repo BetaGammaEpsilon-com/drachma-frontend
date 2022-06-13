@@ -9,7 +9,7 @@ module.exports = {
         300: "#F2A74B"
       },
       offwhite: "#F2F2F2",
-      crimson: "#E64C28"
+      sacrafice: "#E64C28"
     },
     extend: {},
   },

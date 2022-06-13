@@ -3,6 +3,8 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import TitleComponent from "../../OtherComponenets/TitleComponent";
+import UsersDropdownComponent from "../../OtherComponenets/UsersDropdownComponent";
+import MotionsDropDownComponent from "../../OtherComponenets/MotionsDropDownComponent";
 
 // handles the view for looking at a single verified transaction
     // TODO:
@@ -13,12 +15,17 @@ const SingleVerifiedTransactionComponent = () => {
     let transactionId = params.txid;
 
     const ZebIPTransactionURL = `http://127.0.0.1:5000/tres/tx/${transactionId}`;
+    const ZebIPUsersURL = 'http://127.0.0.1:5000/user';
+    const ZebIPMotionsURL = 'http://127.0.0.1:5000/tres/motions';
 
     const [date, setDate] = useState("");
     const [motion, setMotion] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
-    const [username, setUsername] = useState("");
+    const [userID, setUserID] = useState(0);
+
+    const [users, setUsers] = useState([]);
+    const [motions, setMotions] = useState([]);
 
     const handleDeleteTransaction = () => {
         const confirmation = window.confirm("Are you sure you want to permanently delete this transaction?");
@@ -48,18 +55,44 @@ const SingleVerifiedTransactionComponent = () => {
             setDescription(returnedTransaction.description);
             setMotion(returnedTransaction.motion);
             setPrice(returnedTransaction.price);
-            setUsername(returnedUser.name);
+            setUserID(returnedUser.uid);
+        }
+
+        const fetchUsers = async() => {
+            const result = await axios(ZebIPUsersURL)
+            .catch(error => console.error(error));
+
+            setUsers(result.data);
+        }
+
+        const fetchMotions = async() => {
+            const result = await axios(ZebIPMotionsURL)
+            .catch(error => console.error(error));
+            
+            setMotions(result.data);
         }
 
         fetchTransaction();
+        fetchUsers();
+        fetchMotions();
     }, []);
+
+    const onUserChange = (e) => {
+        setUserID(e.target.value);
+    }
+
+    const onMotionChange = (e) => {
+        setMotion(e.target.value);
+    }
 
     return (
         <div>
             <TitleComponent />
             <div className='grid grid-cols-7 grid-flow-row py-5 px-5 gap-4'>
                 <p className='col-span-3 col-start-1 row-start-1'>user:</p>
-                <input className='col-span-5 col-start-3 row-start-1 text-loyalty lowercase h-9 indent-1' value={username}></input>
+                <div className='col-span-5 col-start-3 row-start-1'>
+                    <UsersDropdownComponent users={users} onChange={onUserChange} value={userID}/>   
+                </div>
                 <p className='col-span-3 col-start-1 row-start-2'>date:</p>
                 <input 
                     className='col-span-5 col-start-3 row-start-2 text-loyalty h-9 indent-1' 
@@ -68,12 +101,9 @@ const SingleVerifiedTransactionComponent = () => {
                     onChange={e => setDate(e.target.value)}>
                 </input>
                 <p className='col-span-3 col-start-1 row-start-3'>motion:</p>
-                <input 
-                    className='col-span-5 col-start-3 row-start-3 text-loyalty h-9 indent-1' 
-                    value={motion}
-                    type='text'
-                    onChange={e => setMotion(e.target.value)}>
-                </input>
+                <div className='col-span-5 col-start-3 row-start-3'>
+                    <MotionsDropDownComponent motions={motions} onChange={onMotionChange} />
+                </div>
                 <p className='col-span-3 col-start-1 row-start-4'>price:</p>
                 <input 
                     className='col-span-5 col-start-3 row-start-4 text-loyalty h-9 indent-1' 
@@ -93,7 +123,7 @@ const SingleVerifiedTransactionComponent = () => {
                         modify
                 </button>
                 <button 
-                    className='col-start-6 row-start-7 outline rounded-md h-6 px-5 hover:outline-crimson hover:text-crimson'
+                    className='col-start-6 row-start-7 outline rounded-md h-6 px-5 hover:outline-sacrafice hover:text-sacrafice'
                     onClick={handleDeleteTransaction}>
                         delete
                 </button>
