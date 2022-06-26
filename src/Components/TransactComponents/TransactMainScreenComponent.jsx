@@ -52,6 +52,7 @@ const TransactMainScreenComponent = () => {
             .catch(error => console.error(error));
             
             setMotions(result.data);
+            setMotion(result.data[0].motion);
         }
 
         fetchUsers();

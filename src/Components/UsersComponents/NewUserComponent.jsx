@@ -15,7 +15,7 @@ const NewUserComponent = () => {
             name: nameField,
             balance: balanceField
         })
-        .catch(error => alert(error))
+        .catch(error => console.error(error))
     }
 
     const userInputValidations = (e) => {

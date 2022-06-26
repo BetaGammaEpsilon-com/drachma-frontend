@@ -85,6 +85,20 @@ const SingleVerifiedTransactionComponent = () => {
         setMotion(e.target.value);
     }
 
+    const handleModification = async() => {
+        let transactionBody = {
+            uid: userID,
+            price: price,
+            status: 1,
+            motion: motion,
+            description: description
+        };
+        const result = await axios.put(ZebIPTransactionURL, transactionBody)
+        .catch(error => console.error(error));
+        
+        navigate('/');
+    }
+
     return (
         <div>
             <TitleComponent />
@@ -95,10 +109,9 @@ const SingleVerifiedTransactionComponent = () => {
                 </div>
                 <p className='col-span-3 col-start-1 row-start-2'>date:</p>
                 <input 
-                    className='col-span-5 col-start-3 row-start-2 text-loyalty h-9 indent-1' 
-                    value={date}
-                    type='date'
-                    onChange={e => setDate(e.target.value)}>
+                    disabled 
+                    className='col-span-5 col-start-3 row-start-2 text-loyalty h-9 indent-1 bg-offwhite' 
+                    value={date}>
                 </input>
                 <p className='col-span-3 col-start-1 row-start-3'>motion:</p>
                 <div className='col-span-5 col-start-3 row-start-3'>
@@ -118,7 +131,8 @@ const SingleVerifiedTransactionComponent = () => {
                     type='text'
                     onChange={e => setDescription(e.target.value)}>
                 </input>
-                <button 
+                <button
+                    onClick={handleModification}
                     className='col-start-7 row-start-7 outline rounded-md h-6 px-5 hover:outline-honor-300 hover:text-honor-300'>
                         modify
                 </button>
