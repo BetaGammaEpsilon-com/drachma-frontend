@@ -30,7 +30,7 @@ const TreasurerReport = () => {
                 </div>
                 <ul className='col-start-1 col-span-2 row-start-2'>
                     {
-                        usersList.map((user) =>
+                        usersList.filter(user => user.balance != 0).map((user) =>
                             <TreasurerReportRowComponent 
                                 key={user.uid}
                                 name={user.name}
