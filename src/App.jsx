@@ -1,8 +1,8 @@
-import MainScreenComponent from './Components/MainScreenComponent';
+import TreasurerViewMainScreenComponent from './Components/TreasurerViewMainScreenComponent';
 
 function App() {
   return (
-    <MainScreenComponent />
+    <TreasurerViewMainScreenComponent />
   );
 }
 

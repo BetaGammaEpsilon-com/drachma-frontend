@@ -2,7 +2,7 @@ import React from "react";
 import TreasurerMainScreenComponent from "./TreasurerComponents/TreasurerMainScreenComponent";
 import TitleComponent from "./OtherComponenets/TitleComponent";
 
-const MainScreenComponent = () => {
+const TreasurerViewMainScreenComponent = () => {
     return (
         <div>
             <TitleComponent />    
@@ -11,4 +11,4 @@ const MainScreenComponent = () => {
     );
 }
 
-export default MainScreenComponent;
+export default TreasurerViewMainScreenComponent;
