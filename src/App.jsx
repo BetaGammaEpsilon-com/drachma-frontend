@@ -1,4 +1,4 @@
-import MainScreenComponent from './Components/TreasurerComponents/MainScreenComponent';
+import MainScreenComponent from './Components/MainScreenComponent';
 
 function App() {
   return (

@@ -31,7 +31,7 @@ const NewUserComponent = () => {
 
     return (
         <form onSubmit={e => userInputValidations(e)}>
-            <p className='text-2xl pb-4'>New User:</p>
+            <p className='text-2xl pb-4'>new user:</p>
             <div className='grid grid-col-2 grid-flow-row gap-4'>
                 <p className='col-start-1 row-start-1'>name:</p>
                 <input 

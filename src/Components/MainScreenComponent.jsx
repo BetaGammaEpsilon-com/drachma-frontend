@@ -1,6 +1,6 @@
 import React from "react";
-import TreasurerMainScreenComponent from "./TreasurerMainScreenComponent";
-import TitleComponent from "../OtherComponenets/TitleComponent";
+import TreasurerMainScreenComponent from "./TreasurerComponents/TreasurerMainScreenComponent";
+import TitleComponent from "./OtherComponenets/TitleComponent";
 
 const MainScreenComponent = () => {
     return (

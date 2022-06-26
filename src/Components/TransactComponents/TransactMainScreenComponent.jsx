@@ -6,12 +6,14 @@ import Alert from '@mui/material/Alert';
 import Multiselect from 'multiselect-react-dropdown';
 import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import MotionsDropDownComponent from "../OtherComponenets/MotionsDropDownComponent";
 
 // home screen for making a new transaction
 const TransactMainScreenComponent = () => {
 
     const ZebUsersIP = 'http://127.0.0.1:5000/user';
     const ZebTransactionsIP = 'http://127.0.0.1:5000/tres/tx';
+    const ZebMotionsIP = 'http://127.0.0.1:5000/tres/motions';
 
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [price, setPrice] = useState(0);
@@ -19,16 +21,15 @@ const TransactMainScreenComponent = () => {
     const [description, setDescription] = useState("");
 
     const [usersList, setUsersList] = useState([]);
+    const [motions, setMotions] = useState([]);
 
     const [alertOpen, setAlertOpen] = useState(false);
 
     const [split, setSplit] = useState(false);
 
-
     const theme = createTheme({
         palette: {
           primary: {
-            // Purple and green play nicely together.
             main: "#F2A74B",
           },
         },
@@ -46,7 +47,15 @@ const TransactMainScreenComponent = () => {
             setUsersList(result.data);
         }
 
+        const fetchMotions = async() => {
+            const result = await axios(ZebMotionsIP)
+            .catch(error => console.error(error));
+            
+            setMotions(result.data);
+        }
+
         fetchUsers();
+        fetchMotions();
     }, []);
 
     const handleSwitchChange = (e) => {
@@ -59,6 +68,12 @@ const TransactMainScreenComponent = () => {
         }
         else {
             addTransactions();
+        }
+    }
+
+    const multiselectStyles = {
+        chips: {
+            background: "#273240"
         }
     }
 
@@ -90,6 +105,10 @@ const TransactMainScreenComponent = () => {
         setSelectedUsers(selectedList);
     }
 
+    const onMotionChange = (e) => {
+        setMotion(e.target.value);
+    }
+
     return (
         <div>
             <TitleComponent /> 
@@ -102,6 +121,7 @@ const TransactMainScreenComponent = () => {
                         displayValue='name'
                         onSelect={(l, i) => handleUserSelectChange(l, i)}
                         onRemove={(l, i) => handleUserSelectChange(l, i)}
+                        style={multiselectStyles}
                     />
                 </div>
                 <p className='row-start-2 col-start-1 col-span-3'>price:</p>
@@ -113,13 +133,9 @@ const TransactMainScreenComponent = () => {
                     onChange={e => setPrice(e.target.value)}
                 />
                 <p className='row-start-3 col-start-1 col-span-3'>motion:</p>
-                <input
-                    className='row-start-3 col-start-3 col-span-5 lowercase text-loyalty h-9 indent-1'
-                    type='text'
-                    placeholder='select motion'
-                    value={motion}
-                    onChange={e => setMotion(e.target.value)}
-                />
+                <div className='row-start-3 col-start-3 col-span-5'>
+                    <MotionsDropDownComponent value={motion} onChange={onMotionChange} motions={motions} />
+                </div>
                 <p className='row-start-4 col-start-1 col-span-3'>description:</p>
                 <input
                     className='row-start-4 col-start-3 col-span-5 lowercase text-loyalty h-9 indent-1'
@@ -128,9 +144,9 @@ const TransactMainScreenComponent = () => {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                 />
-                <div className='row-start-5 col-start-7 justify-self-end'>
+                <div className='row-start-5 col-start-6 col-span-2 justify-self-end'>
                     <label>
-                        Split?
+                        Split charge among all users?
                         <ThemeProvider theme={theme}>
                             <Switch checked={split} onChange={handleSwitchChange}></Switch>
                         </ThemeProvider>
