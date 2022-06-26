@@ -3,7 +3,7 @@ import React from "react";
 // a single row in a trasurer report component
 const TreasurerReportRowComponent = (props) => {
 
-    const formattedBalance = (Math.round(props.balance * 100) / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const formattedBalance = (Math.round(props.balance * 100) / 100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
     return (
         <li className='grid grid-cols-2'>

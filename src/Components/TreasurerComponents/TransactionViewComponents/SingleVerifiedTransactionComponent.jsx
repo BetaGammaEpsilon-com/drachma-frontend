@@ -54,7 +54,7 @@ const SingleVerifiedTransactionComponent = () => {
             setDate(returnedTransaction.tx_date.substring(0, 10));
             setDescription(returnedTransaction.description);
             setMotion(returnedTransaction.motion);
-            setPrice(returnedTransaction.price);
+            setPrice(returnedTransaction.price.toFixed(2));
             setUserID(returnedUser.uid);
         }
 

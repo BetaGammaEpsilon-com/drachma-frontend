@@ -89,15 +89,15 @@ const TreasurerMainScreenComponent = () => {
             <div className='col-span-3 row-span-all row-start-1 col-start-7'>
                 <div className='grid grid-cols-2 grid-rows-none'>
                     <p>total:</p>
-                    <p>${transactionsTotal}</p>
-                </div>
-                <div className='grid grid-cols-2 grid-rows-none'>
-                    <p>verified total:</p>
-                    <p>${transactionsVerifiedTotal}</p>
+                    <p>${transactionsTotal.toFixed(2)}</p>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-none'>
                     <p>unverified total:</p>
-                    <p>${transactionsUnverifiedTotal}</p>
+                    <p>${transactionsUnverifiedTotal.toFixed(2)}</p>
+                </div>
+                <div className='grid grid-cols-2 grid-rows-none'>
+                    <p>verified total:</p>
+                    <p>${transactionsVerifiedTotal.toFixed(2)}</p>
                 </div>
             </div>
         </div>
