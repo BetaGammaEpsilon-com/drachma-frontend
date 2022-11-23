@@ -7,14 +7,14 @@ import VerifiedTransactionComponent from "./VerifiedTransactionComponent";
 // fully displays the verfied transactions
 const FullVerifiedTransactionComponent = () => {
 
-    const ZebIP = "http://127.0.0.1:5000/tres";
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'tres';
 
     const [transactionsVerifiedList, setTransactionsVerifiedList] = useState([]);
     
     useEffect(() => {
         const fetchTransactions = async() => {
             const result = await axios(
-                ZebIP
+                requestUrl
             );
             
             let returnedData = result.data;

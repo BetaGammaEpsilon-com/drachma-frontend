@@ -8,13 +8,13 @@ import NewUserComponent from "./NewUserComponent";
 // navigation for all things users
 const UsersMainScreenComponent = () => {
 
-    const ZebIP = 'http://127.0.0.1:5000/user';
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'user';
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
         const fetchUsers = async() => {
-            const result = await axios(ZebIP);
+            const result = await axios(requestUrl);
 
             setUsers(result.data);
         }

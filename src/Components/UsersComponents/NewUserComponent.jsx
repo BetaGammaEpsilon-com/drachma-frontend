@@ -4,14 +4,14 @@ import axios from "axios";
 // component for creating new users
 const NewUserComponent = () => {
 
-    const ZebIP = 'http://127.0.0.1:5000/user';
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'user';
 
     const [nameField, setNameField] = useState("");
     const [balanceField, setBalanceField] = useState(0);
 
     const createNewUser = async() => {
 
-        const result = await axios.post(ZebIP, {
+        const result = await axios.post(requestUrl, {
             name: nameField,
             balance: balanceField
         })
