@@ -6,7 +6,7 @@ import React, { useState } from "react";
     // POST request for adding a new motion
 const NewMotionComponent = () => {
 
-    const ZebIP = 'http://127.0.0.1:5000/tres/motions';
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'tres/motions';
 
     const [motionField, setMotionField] = useState("");
 
@@ -25,7 +25,7 @@ const NewMotionComponent = () => {
         let newMotion = {
             motion: motionField
         }
-        const result = await axios.post(ZebIP, newMotion)
+        const result = await axios.post(requestUrl, newMotion)
         .catch(error => console.error(error));
     }
 

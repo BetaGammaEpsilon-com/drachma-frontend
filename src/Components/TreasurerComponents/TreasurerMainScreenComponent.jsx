@@ -8,9 +8,7 @@ import TransactionHeaderComponent from './TransactionViewComponents/TransactionH
 // Main treasurer home screen to view transactions
 const TreasurerMainScreenComponent = () => {
 
-    const JoshIP = "http://192.168.69.109:5000/tres";
-    const RobbieIP = "http://192.168.69.134:5000/tres";
-    const ZebIP = "http://127.0.0.1:5000/tres";
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'tres';
 
     const [transactionsTotal, setTransactionsTotal] = useState(0);
     const [transactionsVerifiedTotal, setTransactionsVerifiedTotal] = useState(0);
@@ -23,12 +21,10 @@ const TreasurerMainScreenComponent = () => {
     useEffect(() => {
         const fetchTransactions = async() => {
             const result = await axios(
-                ZebIP
+                requestUrl
             );
             
             let returnedData = result.data;
-
-            console.log(result.data)
 
             setTransactionsTotal(returnedData.total);
             setTransactionsVerifiedTotal(returnedData.verified_total);

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 // a component for rendering a single motion
 const MotionComponent = (props) => {
 
-    const ZebIP = 'http://127.0.0.1:5000/tres/motions';
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'tres/motions';
 
     const constant = props.motion == "house" || props.motion == "eboard" || props.motion == "drachma_admin";
 
@@ -21,7 +21,7 @@ const MotionComponent = (props) => {
                 motion: props.motion
             }
         };
-        const result = await axios.delete(ZebIP, deleteBody)
+        const result = await axios.delete(requestUrl, deleteBody)
         .catch(error => console.error(error));
 
         window.location.reload();

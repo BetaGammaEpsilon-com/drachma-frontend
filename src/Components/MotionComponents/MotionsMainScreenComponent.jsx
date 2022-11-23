@@ -8,14 +8,14 @@ import NewMotionComponent from "./NewMotionComponent";
 // Container for the motions components
 const MotionsMainScreenComponent = () => {
 
-    const ZebIP = 'http://127.0.0.1:5000/tres/motions';
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'tres/motions';
 
     const [motions, setMotions] = useState([]);
 
     useEffect(() => {
         const fetchMotions = async() => {
             const result = await axios(
-                ZebIP
+                requestUrl
             );
 
             setMotions(result.data);

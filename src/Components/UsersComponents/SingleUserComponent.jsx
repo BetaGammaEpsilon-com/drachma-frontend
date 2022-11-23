@@ -14,7 +14,7 @@ const SingleUserComponent = () => {
     const userId = params.uid;
     const navigate = useNavigate();
 
-    const ZebIP = `http://127.0.0.1:5000/user/${userId}`;
+    const requestUrl = process.env.REACT_APP_BASE_URL + `user/${userId}`;
 
     const [balance, setBalance] = useState("");
     const [name, setName] = useState("");
@@ -23,10 +23,8 @@ const SingleUserComponent = () => {
 
     useEffect(() => {
         const fetchUser = async() => {
-            const result = await axios(ZebIP)
+            const result = await axios(requestUrl)
             .catch(error => navigate('*'))
-
-            console.log(result.data)
 
             let returnedData = result.data;
 

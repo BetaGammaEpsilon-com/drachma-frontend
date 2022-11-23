@@ -7,14 +7,14 @@ import TreasurerReportRowComponent from "./TreasurerReportRowComponent";
 // Navigation from report link
 const TreasurerReport = () => {
 
-    const ZebIP = "http://127.0.0.1:5000/user"
+    const requestUrl = process.env.REACT_APP_BASE_URL + 'user';
 
     const [usersList, setUsersList] = useState([]);
 
     useEffect(() => {
         const fetchReport = async() => {
             const result = await axios(
-                ZebIP
+                requestUrl
             );
             setUsersList(result.data);
         }

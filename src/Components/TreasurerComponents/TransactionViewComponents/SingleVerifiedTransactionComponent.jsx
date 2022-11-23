@@ -12,11 +12,11 @@ import MotionsDropDownComponent from "../../OtherComponenets/MotionsDropDownComp
 const SingleVerifiedTransactionComponent = () => {
 
     let params = useParams();
-    let transactionId = params.txid;
 
-    const ZebIPTransactionURL = `http://127.0.0.1:5000/tres/tx/${transactionId}`;
-    const ZebIPUsersURL = 'http://127.0.0.1:5000/user';
-    const ZebIPMotionsURL = 'http://127.0.0.1:5000/tres/motions';
+    let transactionId = params.txid;
+    const transactionsRequestUrl = process.env.REACT_APP_BASE_URL + `tres/tx/${transactionId}`;
+    const usersRequestUrl = process.env.REACT_APP_BASE_URL + 'user';
+    const motionsRequestUrl = process.env.REACT_APP_BASE_URL + 'tres/motions';
 
     const [date, setDate] = useState("");
     const [motion, setMotion] = useState("");
@@ -35,7 +35,7 @@ const SingleVerifiedTransactionComponent = () => {
     }
 
     const deleteTransaction = async() => {
-            const result = await axios.delete(ZebIPTransactionURL)
+            const result = await axios.delete(transactionsRequestUrl)
             .catch(error => alert(error));
 
             window.location.reload();
@@ -45,7 +45,7 @@ const SingleVerifiedTransactionComponent = () => {
     
     useEffect(() => {
         const fetchTransaction = async() => {
-            const result = await axios(ZebIPTransactionURL)
+            const result = await axios(transactionsRequestUrl)
             .catch(error => navigate('*'));
             
             let returnedTransaction = result.data.transaction;
@@ -59,14 +59,14 @@ const SingleVerifiedTransactionComponent = () => {
         }
 
         const fetchUsers = async() => {
-            const result = await axios(ZebIPUsersURL)
+            const result = await axios(usersRequestUrl)
             .catch(error => console.error(error));
 
             setUsers(result.data);
         }
 
         const fetchMotions = async() => {
-            const result = await axios(ZebIPMotionsURL)
+            const result = await axios(motionsRequestUrl)
             .catch(error => console.error(error));
             
             setMotions(result.data);
@@ -93,7 +93,7 @@ const SingleVerifiedTransactionComponent = () => {
             motion: motion,
             description: description
         };
-        const result = await axios.put(ZebIPTransactionURL, transactionBody)
+        const result = await axios.put(transactionsRequestUrl, transactionBody)
         .catch(error => console.error(error));
         
         navigate('/');
