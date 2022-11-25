@@ -2,9 +2,9 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import TitleComponent from "../../OtherComponenets/TitleComponent";
-import UsersDropdownComponent from "../../OtherComponenets/UsersDropdownComponent";
-import MotionsDropDownComponent from "../../OtherComponenets/MotionsDropDownComponent";
+import TitleComponent from "../../OtherComponents/TitleComponent";
+import UsersDropdownComponent from "../../OtherComponents/UsersDropdownComponent";
+import MotionsDropDownComponent from "../../OtherComponents/MotionsDropDownComponent";
 
 // handles the view for looking at a single verified transaction
 const SingleUnverifiedTransactionComponent = () => {
@@ -34,7 +34,7 @@ const SingleUnverifiedTransactionComponent = () => {
     }
 
     const deleteTransaction = async() => {
-            const result = await axios.delete(transactionsRequestUrl)
+            await axios.delete(transactionsRequestUrl)
             .catch(error => alert(error));
 
             window.location.reload();
@@ -74,7 +74,7 @@ const SingleUnverifiedTransactionComponent = () => {
         fetchTransaction();
         fetchUsers();
         fetchMotions();
-    }, []);
+    }, [motionsRequestUrl, navigate, transactionsRequestUrl, usersRequestUrl]);
 
     const onUserChange = (e) => {
         setUserID(e.target.value);
@@ -92,7 +92,7 @@ const SingleUnverifiedTransactionComponent = () => {
             motion: motion,
             description: description
         };
-        const result = await axios.put(transactionsRequestUrl, transactionBody)
+        await axios.put(transactionsRequestUrl, transactionBody)
         .catch(error => console.error(error));
 
         navigate('/');

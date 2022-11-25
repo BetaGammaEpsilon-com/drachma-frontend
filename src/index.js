@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TreasurerReport from "./Components/ReportComponents/TreasurerReport";
 import './index.css'
 import MotionsMainScreenComponent from "./Components/MotionComponents/MotionsMainScreenComponent";
-import NoMatchComponent from "./Components/OtherComponenets/NoMatchComponent";
+import NoMatchComponent from "./Components/OtherComponents/NoMatchComponent";
 import FullVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/FullVerifiedTransactionsComponent";
 import SingleVerifiedTransactionComponent from "./Components/TreasurerComponents/TransactionViewComponents/SingleVerifiedTransactionComponent";
 import UsersMainScreenComponent from "./Components/UsersComponents/UsersMainScreenComponent"

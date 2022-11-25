@@ -11,7 +11,7 @@ const NewUserComponent = () => {
 
     const createNewUser = async() => {
 
-        const result = await axios.post(requestUrl, {
+        await axios.post(requestUrl, {
             name: nameField,
             balance: balanceField
         })
@@ -20,7 +20,7 @@ const NewUserComponent = () => {
 
     const userInputValidations = (e) => {
 
-        if (nameField == "") {
+        if (nameField === "") {
             e.preventDefault();
             alert("enter a name for the user")
         }
