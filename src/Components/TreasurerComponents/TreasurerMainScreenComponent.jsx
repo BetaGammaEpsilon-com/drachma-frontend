@@ -16,8 +16,6 @@ const TreasurerMainScreenComponent = () => {
     const [transactionsVerifiedList, setTransactionsVerifiedList] = useState([]);
     const [transactionsUnverifiedList, setTransactionsUnverifiedList] = useState([]);
 
-    const [usersList, setUsersList] = useState([]);
-
     useEffect(() => {
         const fetchTransactions = async() => {
             const result = await axios(
@@ -31,11 +29,10 @@ const TreasurerMainScreenComponent = () => {
             setTransactionsUnverifiedTotal(returnedData.unverified_total);
             setTransactionsVerifiedList(returnedData.verified_tx);
             setTransactionsUnverifiedList(returnedData.unverified_tx);
-            setUsersList(returnedData.users);
         }
     
         fetchTransactions();
-      }, []);
+      }, [requestUrl]);
 
     return (
         <div className='grid grid-cols-9 grid-flow-row py-5 px-5'>

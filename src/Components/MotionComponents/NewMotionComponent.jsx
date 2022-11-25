@@ -12,7 +12,7 @@ const NewMotionComponent = () => {
 
     const handleFormSubmit = (e) => {
 
-        if (motionField == "") {
+        if (motionField === "") {
             e.preventDefault();
             alert("enter a motion");
         }
@@ -25,7 +25,7 @@ const NewMotionComponent = () => {
         let newMotion = {
             motion: motionField
         }
-        const result = await axios.post(requestUrl, newMotion)
+        await axios.post(requestUrl, newMotion)
         .catch(error => console.error(error));
     }
 

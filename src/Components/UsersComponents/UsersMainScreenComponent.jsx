@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import TitleComponent from "../OtherComponenets/TitleComponent";
+import TitleComponent from "../OtherComponents/TitleComponent";
 import UserHeaderComponent from "./UserHeaderComponent";
 import UserComponent from "./UserComponent";
 import NewUserComponent from "./NewUserComponent";
@@ -20,7 +20,7 @@ const UsersMainScreenComponent = () => {
         }
 
         fetchUsers();
-    }, [])
+    }, [requestUrl])
 
     return (
         <div>

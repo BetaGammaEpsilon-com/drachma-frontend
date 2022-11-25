@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
-import TitleComponent from "../../OtherComponenets/TitleComponent";
+import TitleComponent from "../../OtherComponents/TitleComponent";
 import TransactionHeaderComponent from "./TransactionHeaderComponent";
 import VerifiedTransactionComponent from "./VerifiedTransactionComponent";
 
@@ -23,7 +23,7 @@ const FullVerifiedTransactionComponent = () => {
         }
     
         fetchTransactions();
-      }, []);
+      }, [requestUrl]);
 
 
     return (
