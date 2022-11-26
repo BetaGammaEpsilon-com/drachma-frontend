@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import TitleComponent from "./../OtherComponenets/TitleComponent";
+import TitleComponent from "./../OtherComponents/TitleComponent";
 import TransactionHeaderComponent from "../TreasurerComponents/TransactionViewComponents/TransactionHeaderComponent";
 import VerifiedTransactionComponent from "../TreasurerComponents/TransactionViewComponents/VerifiedTransactionComponent";
 import UnverifiedTransactionComponent from "../TreasurerComponents/TransactionViewComponents/UnverifiedTransactionComponent";
-import { Link } from "react-router-dom";
 
 // information about a user
 const SingleUserComponent = () => {
@@ -35,7 +34,7 @@ const SingleUserComponent = () => {
         }
 
         fetchUser();
-    }, []);
+    }, [navigate, requestUrl]);
 
     return (
         <div>

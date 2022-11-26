@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 
 // a component for rendering a single motion
 const MotionComponent = (props) => {
 
     const requestUrl = process.env.REACT_APP_BASE_URL + 'tres/motions';
 
-    const constant = props.motion == "house" || props.motion == "eboard" || props.motion == "drachma_admin";
+    const constant = props.motion === "house" || props.motion === "eboard" || props.motion === "drachma_admin";
 
     const handleDeleteMotion = () => {
         const confirmation = window.confirm("Are you sure you want to permanently delete this motion?");
@@ -21,7 +21,7 @@ const MotionComponent = (props) => {
                 motion: props.motion
             }
         };
-        const result = await axios.delete(requestUrl, deleteBody)
+        await axios.delete(requestUrl, deleteBody)
         .catch(error => console.error(error));
 
         window.location.reload();

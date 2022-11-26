@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TitleComponent from "../OtherComponenets/TitleComponent";
+import TitleComponent from "../OtherComponents/TitleComponent";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Multiselect from 'multiselect-react-dropdown';
 import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import MotionsDropDownComponent from "../OtherComponenets/MotionsDropDownComponent";
+import MotionsDropDownComponent from "../OtherComponents/MotionsDropDownComponent";
 
 // home screen for making a new transaction
 const TransactMainScreenComponent = () => {
@@ -33,13 +33,8 @@ const TransactMainScreenComponent = () => {
             main: "#F2A74B",
           },
         },
-      });
-
-    const sleep = (ms) => new Promise(
-        resolve => setTimeout(resolve, ms)
-    );
-
-
+    });
+    
     useEffect(() => {
 
         const fetchUsers = async() => {
@@ -64,7 +59,7 @@ const TransactMainScreenComponent = () => {
     }
 
     const handleUserSubmit = () => {
-        if (selectedUsers == [] || price == 0 || motion == "" || description == "") {
+        if (selectedUsers === [] || price === 0 || motion === "" || description === "") {
             alert("fill out all fields");
         }
         else {

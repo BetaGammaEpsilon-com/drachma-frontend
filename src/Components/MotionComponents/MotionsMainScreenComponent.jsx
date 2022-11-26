@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import TitleComponent from "../OtherComponenets/TitleComponent";
+import TitleComponent from "../OtherComponents/TitleComponent";
 import MotionComponent from "./MotionComponent";
 import MotionHeaderComponent from "./MotionHeaderComponent";
 import NewMotionComponent from "./NewMotionComponent";
@@ -21,7 +21,7 @@ const MotionsMainScreenComponent = () => {
             setMotions(result.data);
         }
         fetchMotions();
-    }, []);
+    }, [requestUrl]);
 
     return (
         <div>
